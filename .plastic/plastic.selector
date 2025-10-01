@@ -1,4 +1,0 @@
-repository "2d12d2/battlemap@18968264841316@cloud"
-  path "/"
-    br "/main"
-    co "/main"
