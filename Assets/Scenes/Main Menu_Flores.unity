@@ -202,6 +202,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1729773710}
+        m_TargetAssemblyTypeName: SwitchingPanelScript, Assembly-CSharp
+        m_MethodName: ShowInsideLobbyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1729773711}
         m_TargetAssemblyTypeName: CustomToLobbyInput, Assembly-CSharp
         m_MethodName: OnPostCreateClicked
@@ -2928,7 +2940,7 @@ GameObject:
   - component: {fileID: 335930829}
   - component: {fileID: 335930828}
   m_Layer: 5
-  m_Name: Battle Loading
+  m_Name: battleloadingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2956,12 +2968,12 @@ RectTransform:
   - {fileID: 2022334583}
   - {fileID: 1104423212}
   - {fileID: 804898976}
-  m_Father: {fileID: 990889950}
+  m_Father: {fileID: 1729773709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.5911255, y: 52.338562}
+  m_SizeDelta: {x: 1174, y: 492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &335930828
 MonoBehaviour:
@@ -4143,7 +4155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &490263364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5771,7 +5783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &668913112
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7689,8 +7701,9 @@ GameObject:
   - component: {fileID: 895856604}
   - component: {fileID: 895856606}
   - component: {fileID: 895856605}
+  - component: {fileID: 895856607}
   m_Layer: 5
-  m_Name: Pre Battle Panel
+  m_Name: prebattlePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7729,7 +7742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.9843137}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7754,6 +7767,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895856603}
   m_CullTransparentMesh: 1
+--- !u!114 &895856607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895856603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65dc66aacf96b54e99700e496829d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoLoadScene
+  sceneToLoad: Map1
+  delay: 2
 --- !u!1 &974325109
 GameObject:
   m_ObjectHideFlags: 0
@@ -7971,7 +7998,6 @@ RectTransform:
   m_Children:
   - {fileID: 1445795814}
   - {fileID: 1729773709}
-  - {fileID: 335930827}
   - {fileID: 895856604}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8871,7 +8897,7 @@ Transform:
   m_GameObject: {fileID: 1134216227}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: -1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11274,10 +11300,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 990889950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000061035156, y: 0.24859619}
-  m_SizeDelta: {x: 1176, y: 491.5}
+  m_SizeDelta: {x: 4, y: -0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445795815
 MonoBehaviour:
@@ -11947,10 +11973,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 668913112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.4439087, y: 205.0476}
-  m_SizeDelta: {x: 1180.928, y: -445.7848}
+  m_SizeDelta: {x: -47.07202, y: -445.7848}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517951721
 MonoBehaviour:
@@ -13095,7 +13121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1670448675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13176,12 +13202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565c806b0ac7a3d4497dbb80fb2b7be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  lobbyNameInput: {fileID: 1635500064}
-  passwordInput: {fileID: 0}
-  lobbyNameDisplay: {fileID: 1386242311}
-  passwordDisplay: {fileID: 1193171587}
-  customLobbyPanel: {fileID: 1670448674}
-  insidelobbyPanel: {fileID: 490263363}
 --- !u!1 &1695886507
 GameObject:
   m_ObjectHideFlags: 0
@@ -13406,6 +13426,7 @@ Transform:
   - {fileID: 1843430384}
   - {fileID: 1670448675}
   - {fileID: 490263364}
+  - {fileID: 335930827}
   m_Father: {fileID: 990889950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1729773710
@@ -13425,6 +13446,8 @@ MonoBehaviour:
   listOfLobbyPanelGO: {fileID: 1843430383}
   customLobbyPanelGO: {fileID: 1670448674}
   insideLobbyPanelGO: {fileID: 490263363}
+  battleloadingPanelGO: {fileID: 335930826}
+  prebattlePanelGO: {fileID: 895856603}
 --- !u!114 &1729773711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13438,7 +13461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   lobbyNameInput: {fileID: 1635500064}
-  passwordInput: {fileID: 0}
+  passwordInput: {fileID: 222801203}
   lobbyNameDisplay: {fileID: 1386242311}
   passwordDisplay: {fileID: 1193171587}
   customLobbyPanel: {fileID: 1670448674}
@@ -15343,7 +15366,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2065927576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1729773710}
+        m_TargetAssemblyTypeName: SwitchingPanelScript, Assembly-CSharp
+        m_MethodName: ShowBattleloadingPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2065927576
 MonoBehaviour:
   m_ObjectHideFlags: 0
