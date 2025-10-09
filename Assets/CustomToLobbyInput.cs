@@ -1,58 +1,70 @@
-﻿using UnityEngine;
-using TMPro; // Needed for TextMeshPro UI components
-using UnityEngine.UI; // Needed for Button
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class CustomToLobbyInput : MonoBehaviour
+public class LobbySetupManager : MonoBehaviour
 {
-    [Header("Input Fields (from CustomLobbyPanel)")]
-    public TMP_InputField lobbyNameInput;   // Input for lobby name
-    public TMP_InputField passwordInput;    // Input for password
+    // UI references for Custom Lobby Panel
+    [SerializeField] private TMP_InputField lobbyNameInput;
+    [SerializeField] private TMP_InputField lobbyPasswordInput;
+    [SerializeField] private GameObject customLobbyPanel;
 
-    [Header("Text Display (from InsideLobbyPanel)")]
-    public TMP_Text lobbyNameDisplay;       // Where to show lobby name
-    public TMP_Text passwordDisplay;        // Where to show password
+    // UI references for Inside Lobby Panel
+    [SerializeField] private TMP_Text lobbyNameDisplay;
+    [SerializeField] private TMP_Text passwordDisplay;
+    [SerializeField] private GameObject insideLobbyPanel;
 
-    [Header("Panels")]
-    public GameObject customLobbyPanel;     // Custom Lobby Panel
-    public GameObject insideLobbyPanel;     // Inside Lobby Panel
-
-    [Header("Buttons")]
-    public Button postCreateBtn;            // Button that triggers the panel switch
+    // Button reference
+    [SerializeField] private Button postCreateBtn;
 
     private void Start()
     {
         // Add listener to the button
-        postCreateBtn.onClick.AddListener(OnPostCreateClicked);
+        if (postCreateBtn != null)
+        {
+            postCreateBtn.onClick.AddListener(OnPostCreateClicked);
+        }
     }
 
     private void OnDestroy()
     {
-        // Remove listener when object is destroyed (good practice)
-        postCreateBtn.onClick.RemoveListener(OnPostCreateClicked);
+        // Remove listener to prevent potential memory leaks
+        if (postCreateBtn != null)
+        {
+            postCreateBtn.onClick.RemoveListener(OnPostCreateClicked);
+        }
     }
 
-    // Function called when PostCreateBtn is clicked
-    public void OnPostCreateClicked()
+    private void OnPostCreateClicked()
     {
-        // Get the text from input fields
+        // Get input data
         string lobbyName = lobbyNameInput.text;
-        string password = passwordInput.text;
+        string lobbyPassword = lobbyPasswordInput.text;
 
-        // ✅ Debug logs to check if input values are being read
-        Debug.Log("Lobby Name Entered: " + lobbyName);
-        Debug.Log("Password Entered: " + password);
+        // Optional: Validate input
+        if (lobbyName.Length < 4)
+        {
+            Debug.LogWarning("Lobby name must be at least 4 characters long.");
+            return;
+        }
 
-        // Display the entered lobby name and password
-        lobbyNameDisplay.text = "Lobby: " + lobbyName;
-        passwordDisplay.text = "Password: " + password;
+        // Update display texts
+        if (lobbyNameDisplay != null)
+        {
+            lobbyNameDisplay.text = "Lobby: " + lobbyName;
+        }
+        if (passwordDisplay != null)
+        {
+            passwordDisplay.text = "Password: " + lobbyPassword;
+        }
 
         // Switch panels
-        customLobbyPanel.SetActive(false);
-        insideLobbyPanel.SetActive(true);
-
-        // Optional: Clear input fields after switching
-        lobbyNameInput.text = "";
-        passwordInput.text = "";
+        if (customLobbyPanel != null && insideLobbyPanel != null)
+        {
+            customLobbyPanel.SetActive(false);
+            insideLobbyPanel.SetActive(true);
+        }
     }
-
 }
